@@ -1,0 +1,46 @@
+#!/usr/bin/python3
+
+from os import system
+
+print('')
+print('-'*40)
+site = str(input('Site: '))
+print('-'*40)
+s = int(input('HTTP [1] / HTTPS[2] > '))
+print('-'*40)
+system('cp banner.rb /usr/lib/ruby/vendor_ruby/whatweb/')
+
+print('''__        __   _    ____
+\ \      / /__| |__/ ___|  ___ __ _ _ __  _ __   ___ _ __
+ \ \ /\ / / _ \ '_ \___ \ / __/ _` | '_ \| '_ \ / _ \ '__|
+  \ V  V /  __/ |_) |__) | (_| (_| | | | | | | |  __/ |
+   \_/\_/ \___|_.__/____/ \___\__,_|_| |_|_| |_|\___|_|''')
+
+print('\n[*] Escaneando...')
+
+if s == 1:
+    print('\nUNISCAN\n')
+    system('uniscan -u http://{} -qweds'.format(site))
+    print('\nNIKTO\n')
+    system('nikto -host http://{}'.format(site))
+    print('\nWHOIS\n')
+    system('whois {}'.format(site))
+    print('\nWHATWEB\n')
+    system('whatweb http://{}'.format(site))
+    print('\nNMAP\n')
+    system('nmap -sV -A -O {}'.format(site))
+
+elif s == 2:
+    print('\nUNISCAN\n')
+    system('uniscan -u https://{} -qweds'.format(site))
+    print('\nNIKTO\n')
+    system('nikto -host https://{}'.format(site))
+    print('\nWHOIS\n')
+    system('whois {}'.format(site))
+    print('\nWHATWEB\n')
+    system('whatweb http://{}'.format(site))
+    print('\nNMAP\n')
+    system('nmap -sV -A -O {}'.format(site))
+
+else:
+    print('\033[31;1m' + '\nOpção Inválida')
