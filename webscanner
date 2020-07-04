@@ -36,7 +36,7 @@ elif s == 2:
     print('\nWHOIS\n')
     system('whois {}'.format(site))
     print('\nWHATWEB\n')
-    system('whatweb http://{}'.format(site))
+    system('whatweb https://{}'.format(site))
     print('\nNMAP\n')
     system('nmap -sV -A -O {}'.format(site))
 
