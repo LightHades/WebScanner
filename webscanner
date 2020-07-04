@@ -42,3 +42,4 @@ elif s == 2:
 
 else:
     print('\033[31;1m' + '\nOpção Inválida')
+    print('\033[0m')
