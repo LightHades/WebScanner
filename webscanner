@@ -17,28 +17,27 @@ print('''__        __   _    ____
 print('\n[*] Escaneando...')
 
 if s == 1:
-    print('\nUNISCAN\n')
-    system('uniscan -u http://{} -qweds'.format(site))
-    print('\nNIKTO\n')
-    system('nikto -host http://{}'.format(site))
     print('\nWHOIS\n')
     system('whois {}'.format(site))
     print('\nWHATWEB\n')
     system('whatweb http://{}'.format(site))
     print('\nNMAP\n')
     system('nmap -sV -A -O {}'.format(site))
-
-elif s == 2:
-    print('\nUNISCAN\n')
-    system('uniscan -u https://{} -qweds'.format(site))
     print('\nNIKTO\n')
-    system('nikto -host https://{}'.format(site))
-    print('\nWHOIS\n')
+    system('nikto -host http://{}'.format(site))
+    print('\nUNISCAN\n')
+    system('uniscan -u http://{} -qweds'.format(site))
+    
+elif s == 2:
     system('whois {}'.format(site))
     print('\nWHATWEB\n')
     system('whatweb https://{}'.format(site))
     print('\nNMAP\n')
     system('nmap -sV -A -O {}'.format(site))
+    print('\nNIKTO\n')
+    system('nikto -host https://{}'.format(site))
+    print('\nUNISCAN\n')
+    system('uniscan -u https://{} -qweds'.format(site))
 
 else:
     print('\033[31;1m' + '\nOpção Inválida')
