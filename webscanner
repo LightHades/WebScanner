@@ -6,7 +6,7 @@ print('')
 print('-'*40)
 site = str(input('Site: '))
 print('-'*40)
-s = int(input('HTTP [1] / HTTPS[2] > '))
+s = int(input('HTTP [1] / HTTPS [2] > '))
 print('-'*40)
 print('''__        __   _    ____
 \ \      / /__| |__/ ___|  ___ __ _ _ __  _ __   ___ _ __
