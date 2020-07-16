@@ -2,43 +2,95 @@
 
 from os import system
 
-print('')
-print('-'*40)
-site = str(input('Site: '))
-print('-'*40)
-s = int(input('HTTP [1] / HTTPS [2] > '))
-print('-'*40)
+volta = 1
+
+print('\033[32;1m')
 print('''__        __   _    ____
 \ \      / /__| |__/ ___|  ___ __ _ _ __  _ __   ___ _ __
  \ \ /\ / / _ \ '_ \___ \ / __/ _` | '_ \| '_ \ / _ \ '__|
   \ V  V /  __/ |_) |__) | (_| (_| | | | | | | |  __/ |
    \_/\_/ \___|_.__/____/ \___\__,_|_| |_|_| |_|\___|_|''')
 
-print('\n[*] Escaneando...')
+print('\033[33m' + '\n         (Ex: www.site.com)')
+site = str(input('\033[0m' + '> Site: '))
+http = int(input('> http (1) - https (2): '))
 
-if s == 1:
-    print('\nWHOIS\n')
-    system('whois {}'.format(site))
-    print('\nWHATWEB\n')
-    system('whatweb http://{}'.format(site))
-    print('\nNMAP\n')
-    system('nmap -sV -A -O {}'.format(site))
-    print('\nNIKTO\n')
-    system('nikto -host http://{}'.format(site))
-    print('\nUNISCAN\n')
-    system('uniscan -u http://{} -qweds'.format(site))
-    
-elif s == 2:
-    system('whois {}'.format(site))
-    print('\nWHATWEB\n')
-    system('whatweb https://{}'.format(site))
-    print('\nNMAP\n')
-    system('nmap -sV -A -O {}'.format(site))
-    print('\nNIKTO\n')
-    system('nikto -host https://{}'.format(site))
-    print('\nUNISCAN\n')
-    system('uniscan -u https://{} -qweds'.format(site))
+system('clear')
 
-else:
-    print('\033[31;1m' + '\nOpção Inválida')
-    print('\033[0m')
+while volta == 1:
+
+    print('\033[32m' + '(1) Whois Scan')
+    print('(2) Nmap Scan')
+    print('(3) Whatweb')
+    print('(4) Nikto')
+    print('(5) Uniscan')
+    print('(6) Tudo')
+
+    print('\033[36m')
+    opcao = int(input('[*] Opção > ' + '\033[32m'))
+
+    if opcao == 1:
+        system(f'\nwhois {site}')
+
+    elif opcao == 2:
+        print('\n(1) > Simples')
+        print('(2) > Complexo')
+        nmap = int(input('\n-> '))
+        if nmap == 1:
+            system(f'\nnmap {site}')
+        elif nmap == 2:
+            system(f'\nnmap -sV -A -O {site}')
+
+    elif opcao == 3:
+        if http == 1:
+            system(f'\nwhatweb http://{site}')
+        elif http == 2:
+            system(f'\nwhatweb https://{site}')
+
+    elif opcao == 4:
+        if http == 1:
+            system(f'\nnikto -host http://{site}')
+        elif http == 2:
+            system(f'\nnikto -host https://{site}')
+
+    elif opcao == 5:
+        if http == 1:
+            system(f'\nuniscan -u http://{site} -qweds')
+        elif https == 2:
+            system(f'\nuniscan -u https://{site} -qweds')
+
+    elif opcao == 6:
+        if http == 1:
+            print('\nWHOIS\n')
+            system('whois {}'.format(site))
+            print('\nWHATWEB\n')
+            system('whatweb http://{}'.format(site))
+            print('\nNMAP (simples)\n')
+            system('nmap {}'.format(site))
+            print('\nNMAP (completo)\n')
+            system('nmap -sV -A -O {}'.format(site))
+            print('\nNIKTO\n')
+            system('nikto -host http://{}'.format(site))
+            print('\nUNISCAN\n')
+            system('uniscan -u http://{} -qweds'.format(site))
+
+        elif http == 2:
+            print('\nWHOIS\n')
+            system('whois {}'.format(site))
+            print('\nWHATWEB\n')
+            system('whatweb https://{}'.format(site))
+            print('\nNMAP (simples)\n')
+            system('nmap {}'.format(site))
+            print('\nNMAP (completo)\n')
+            system('nmap -sV -A -O {}'.format(site))
+            print('\nNIKTO\n')
+            system('nikto -host https://{}'.format(site))
+            print('\nUNISCAN\n')
+            system('uniscan -u https://{} -qweds'.format(site))
+
+    else:
+        print('\033[31m' + '\nOpção Inválida')
+        print('\033[0m')
+
+    volta = int(input('\033[33m' + '\nVoltar ao script (1) / Sair (0) > '))
+    system('clear')
