@@ -27,7 +27,7 @@ echo -e "$red\n"
 
 echo "Webscanner está sendo excluido"
 
-printf 'Deseja excluir os scans salvos?: '"$null_color"
+printf 'Deseja excluir os scans salvos?:(y/n) '"$null_color"
 read scan
 
 echo -e "$red"
