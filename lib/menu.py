@@ -64,7 +64,7 @@ def choice_menu():
         exit()
 
     print('\033[32m' + 'Deseja Salvar o resultado?')
-    print('Obs,se escolher 1, o resultado só sera visivel apos a conclução do script')
+    print('Obs,se escolher 1, o resultado só sera visivel apos a conclusão do script')
     print('(1) Sim')
     print('(2) Não')
 
